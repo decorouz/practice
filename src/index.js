@@ -1,12 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+
+const Hello = ({ name, age }) => {
+  const bornYear = () => {
+    const yearNow = new Date().getFullYear();
+    return yearNow - age;
+  };
+  return (
+    <div>
+      <p>
+        Hello {name}, you are {age} years old.{' '}
+      </p>
+      <p>So you were probably born in {bornYear()} </p>
+    </div>
+  );
+};
+
+const Footer = () => {
+  return (
+    <div>
+      greeting app created by
+      <a href="https://github.com/decorouz/fullStack2019"> adeyemi</a>
+    </div>
+  );
+};
+
+const App = () => {
+  const name = 'James';
+  const age = 34;
+  return (
+    <>
+      <h1>Greetings</h1>
+      <Hello name="Abiola" age={47 + 34} />
+      <Hello name={name} age={age} />
+      <Footer />
+    </>
+  );
+};
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
